@@ -52,9 +52,8 @@ const filterdata =(filtered)=>{
     }
 }
 
-export const filterData = (data,category)=>{
-    return function (dispatch){
-        const filtered = data.filter(values => values.category === category);
-        dispatch(filterdata(filtered))
-    }
+export const filterData = (data,category) => 
+function (dispatch) {
+    const filtered = data.filter((values) => values.category === category)
+    dispatch(filterdata(filtered))
 }

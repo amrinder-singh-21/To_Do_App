@@ -23,15 +23,17 @@ const Loops = () => {
   console.log("data aftr", data);
   console.log("type of data -", typeof data);
 
-  // //for of used for values
-  //        for(let values of data){
-  //       //  console.log("values",values);
-  // }
+  //for of// loops through values of an iterable object
+  const a = [{1:"12",22:"22"}]
+         for(let values of a){
+         console.log("values",values);
+  }
 
-  //for in used for keys
-  //     for(let keys in data){
-  //           // console.log("keys",keys)
-  // }
+ // for in // loops through properties of an object
+ const b = {1:"12",22:"22"}
+      for(let keys in b){
+             console.log("keys",keys)
+  }
 
     //object assigning
   const obj = [{ id: 56, name: "singh" }];
