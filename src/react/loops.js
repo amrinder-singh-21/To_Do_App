@@ -20,25 +20,25 @@ const Loops = () => {
     dispatch(asynFetchData());
   }, []);
 
-  console.log("data aftr", data);
-  console.log("type of data -", typeof data);
+  //console.log("data aftr", data);
+  //console.log("type of data -", typeof data);
 
   //for of// loops through values of an iterable object
   const a = [{1:"12",22:"22"}]
          for(let values of a){
-         console.log("values",values);
+       //  console.log("values",values);
   }
 
  // for in // loops through properties of an object
  const b = {1:"12",22:"22"}
       for(let keys in b){
-             console.log("keys",keys)
+       //      console.log("keys",keys)
   }
 
     //object assigning
   const obj = [{ id: 56, name: "singh" }];
   const obj2 = Object.assign([...obj, ...data]);
-  console.log("object assign", obj2);
+ // console.log("object assign", obj2);
 
   const name = obj2.map((value) => value.name);
   // const checkData = () => {
@@ -53,7 +53,7 @@ const Loops = () => {
 
   //         console.log("isFind", name.find(Serch => Serch === serch ))
   // }
-  console.log("isInc", isInc);
+  //console.log("isInc", isInc);
 
   //prototyping of array
   // Array.prototype.ammy = function() {
@@ -63,6 +63,9 @@ const Loops = () => {
   //   };
   //   name.ammy()
   //   console.log("amy",name )
+
+
+//slicing string
 
   const container = {
     display: "flex",
