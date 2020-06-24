@@ -1,10 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import { dataEntry, removeData, editData } from "../redux/action";
+import { dataEntry, removeData, editData, removeAll } from "../redux/action";
 import { useSelector, useDispatch } from "react-redux";
 
-function CRUD_basics_withRedux() {
-
+function To_Do_App() {
   const [input, setInput] = useState("");
   const [index, setIndex] = useState("");
   const [value, setValue] = useState("");
@@ -19,13 +18,14 @@ function CRUD_basics_withRedux() {
   };
 
   //Adding Items
-  const buttonClick = () => {
+  const formSubmit = (e) => {
+    e.preventDefault();
     data.push(input);
     dispatch(dataEntry(data));
     setInput("");
   };
 
-//Deleting items
+  //Deleting items
   const removeItem = (value) => {
     setIsEdit(false);
     const newData = data.filter((values) => {
@@ -47,27 +47,57 @@ function CRUD_basics_withRedux() {
     dispatch(editData(data));
   };
 
+  //Remove all items
+  const removeAllItems = () => {
+    const remove = [];
+    dispatch(removeAll(remove));
+  };
+
+  //toDo
+  const toDo = () => {
+    if (data.length == 0) {
+      alert("you have nothing to do in the List");
+    } else alert(`you have total ${data.length} tasks.\nBut Please do '${data[Math.floor(Math.random() * data.length)]}' first.`);
+  };
+
   //customized button style
   const button = {
     width: "40%",
+    height : "30px"
   };
 
   return (
     <div>
       <div className="subContainer">
-        <h2>Type in a new Name below:</h2>
-
-        <input type="text" value={input} onChange={handleChange}></input>
-        <br></br>
-        <button type="button" onClick={buttonClick} disabled={!input}>
-          Submit
+        <h2>Type a new Entry below:</h2>
+        <form onSubmit={formSubmit}>
+          <input
+            type="text"
+            value={input}
+            onChange={handleChange}
+            minLength="5"
+            required
+          ></input>
+          <br></br>
+          <button type="submit">Click here to make entry</button>
+        </form>
+        <div className="buttons">
+       
+        <button type="submit" className="buttonStyle" onClick={toDo}>
+          What-To-Do
         </button>
+        <button type="submit" className="buttonStyle"  onClick={removeAllItems}>
+        Remove All Items
+      </button>
+        </div>
       </div>
       <div className="subContainer">
-        <h2> Name Entries:- </h2>
+        <h2> Entries:- </h2>
         <hr></hr>
         <div>
-        { data.length == 0 ? "no data Found. You may type in the text box given above ":""}
+          {data.length == 0
+            ? <div>no data Found. <br></br><br></br>You may type in the text box given above to start</div>
+            : ""}
           {isEdit && (
             <div>
               <input
@@ -84,15 +114,16 @@ function CRUD_basics_withRedux() {
             <ol>
               {data.map((value, index) => (
                 <li key={index}>
-               
-                  <b><span style={{fontSize:"1.5em solid"}}>{value} </span></b>
+                  <b>
+                    <span style={{ fontSize: "1.5em solid" }}>{value} </span>
+                  </b>
                   <br></br>
                   <button
                     type="submit"
                     onClick={() => removeItem(value)}
                     style={button}
                   >
-                    delete
+                    Delete
                   </button>
                   <button
                     type="submit"
@@ -100,7 +131,8 @@ function CRUD_basics_withRedux() {
                     style={button}
                   >
                     Edit
-                  </button><hr></hr>
+                  </button>
+                  <hr></hr>
                 </li>
               ))}
             </ol>
@@ -111,4 +143,4 @@ function CRUD_basics_withRedux() {
   );
 }
 
-export default CRUD_basics_withRedux;
+export default To_Do_App;

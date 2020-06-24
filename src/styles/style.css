@@ -7,19 +7,22 @@ h2{
 }
 button{
     width: 100%;
-    height: 30px;
-    border-radius: 8px 8px 0  0;
+    height: 50px;
     background-color:  rgba(154, 238, 115, 0.5) ;
     color: black;
+    border-radius: 8px 8px 0  0;
+
 }
 input{
     width: 96%;
-    height: 30px;
+    height: 40px;
     padding: 5px;
     border : none
 }
 .container{
     background-color:  rgba(154, 238, 115, 0.5) ;
+    height: 460px;
+    overflow-y: scroll;
     margin : auto ;
     display : flex ;
     justify-content: space-evenly;
@@ -30,10 +33,19 @@ input{
 }
 .subContainer{
     background-color:  rgba(100,0,0,0.3) ;
-    width : 95%;
+    width : 500px;
     box-shadow: 0 0 5px 5px black;
     padding: 10px;
     margin:10px;
     text-align: center;
+
+    }
+    .buttons{
+        display: flex;
+    }
+    .buttonStyle{
+        background-color: rgba(100,100,100,0.3);
+        color: rgba(255,255,255,0.8);
+        border-radius: 8px 8px 8px 8px;
 
     }

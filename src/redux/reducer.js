@@ -1,4 +1,4 @@
-import {ADD, DELETE, EDIT} from './actionTypes'
+import {ADD, DELETE, EDIT, REMOVE_ALL} from './actionTypes'
 
 const initialState = {
     data :[]
@@ -15,6 +15,10 @@ export const messageReducer = (state=initialState, action) =>{
             data : action.payload
         }
         case EDIT : return{
+            ...state,
+            data : action.payload
+        }
+        case REMOVE_ALL : return{
             ...state,
             data : action.payload
         }
