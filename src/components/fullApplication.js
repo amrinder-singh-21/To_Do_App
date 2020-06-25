@@ -46,6 +46,7 @@ function FullApplication() {
   //Removing single item
   const removeSingleItem = (value) => {
     setIsEdit(false);
+    setInput('')
     const newData = data.filter((values) => {
       return values !== value;
     });

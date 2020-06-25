@@ -1,18 +1,15 @@
-import React from 'react';
+import React from "react";
 
-const DataList = ({value, index, 
-    editItem,
-    removeSingleItem,isEdit}) => {
-
-        //customized button style
+const DataList = ({ value, index, editItem, removeSingleItem, isEdit }) => {
+  //customized button style
   const button = {
     width: "40%",
     height: "30px",
   };
 
-    return (
-        <div>
-        <b>
+  return (
+    <div>
+      <b>
         <span style={{ fontSize: "1.5em solid" }}>{value} </span>
       </b>
 
@@ -31,8 +28,8 @@ const DataList = ({value, index,
       >
         {isEdit ? "being Edited" : "Edit"}
       </button>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default DataList;
