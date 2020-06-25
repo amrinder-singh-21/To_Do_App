@@ -18,13 +18,14 @@ function FullApplication() {
   };
   const formSubmit = (e) => {
     e.preventDefault();
-    data.push(input);
+    setData([...data,input])
     setInput("");
   };
 
   //toDo
   const toDo = () => {
     setIsEdit(false);
+    setInput('')
     if (data.length == 0) {
       alert("you have nothing to do in the List");
     } else
@@ -39,6 +40,7 @@ function FullApplication() {
   const removeAllItems = () => {
     setIsEdit(false);
     setData([]);
+    setInput('')
   };
 
   //Removing single item
@@ -55,16 +57,19 @@ function FullApplication() {
   const editItem = (value, index) => {
     setIsEdit(true);
     setIndex(index);
-    setValue(value);
+    //setValue(value);
+    setInput(value);
     console.log("value", value, "index--", index);
   };
   const valueHandler = (e) => {
     setValue(e.target.value);
   };
 
-  const saveItem = (value, index) => {
+  const saveItem = (e) => {
+    e.preventDefault();
+    data[index] = input;
     setIsEdit(false);
-    data[index] = value;
+    setInput('')
   };
 
   return (
@@ -79,6 +84,8 @@ function FullApplication() {
         <div>
           <CreateOptions
             input={input}
+            isEdit={isEdit}
+            saveItem={saveItem}
             handleChange={handleChange}
             formSubmit={formSubmit}
           ></CreateOptions>
@@ -88,13 +95,9 @@ function FullApplication() {
         <div>
           <ReadOptions
             data={data}
-            values={value}
-            valueHandler={valueHandler}
-            index={index}
-            isEdit={isEdit}
             removeSingleItem={removeSingleItem}
             editItem={editItem}
-            saveItem={saveItem}
+            isEdit={isEdit}
           ></ReadOptions>
         </div>
       </div>

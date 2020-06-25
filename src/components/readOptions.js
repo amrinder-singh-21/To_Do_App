@@ -1,21 +1,13 @@
 import React from "react"; 
+import DataList from "./dataList";
 
 const ReadOptions = ({
   data,
-  values,
-  valueHandler,
-  index,
-  isEdit,
   editItem,
-  saveItem,
   removeSingleItem,
+  isEdit
 }) => {
-  //customized button style
-  const button = {
-    width: "40%",
-    height: "30px",
-  };
-
+  
   return (
     <div>
       <div className="subContainer">
@@ -30,42 +22,12 @@ const ReadOptions = ({
           ) : (
             ""
           )}
-          {isEdit && (
-            <div>
-              <input type="text" value={values} onChange={valueHandler}></input>
-              <button
-                type="submit"
-                onClick={() => {
-                  saveItem(values, index);
-                }}
-              >
-                save
-              </button>
-            </div>
-          )}
+         
           <div>
             <ol>
               {data.map((value, index) => (
                 <li key={index}>
-                  <b>
-                    <span style={{ fontSize: "1.5em solid" }}>{value} </span>
-                  </b>
-
-                  <br></br>
-                  <button
-                    type="submit"
-                    style={button}
-                    onClick={() => removeSingleItem(value)}
-                  >
-                    Delete
-                  </button>
-                  <button
-                    type="submit"
-                    style={button}
-                    onClick={() => editItem(value, index)}
-                  >
-                    Edit
-                  </button>
+                  <DataList value={value} index={index} editItem={editItem} removeSingleItem={removeSingleItem} isEdit={isEdit}/>
                   <hr></hr>
                 </li>
               ))}
