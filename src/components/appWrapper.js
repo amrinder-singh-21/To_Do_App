@@ -5,7 +5,7 @@ const AppWrapper = () => {
   return (
     <div>
       <h4>
-        Assignment by:- <code>Recraft Relic</code>
+        Assignment by:- <code>Recraft Relic.</code>
       </h4>
       <h3>
         Done by:- <code>Amrinder Singh</code>
