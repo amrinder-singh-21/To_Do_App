@@ -14,6 +14,7 @@ module :{
     },{
       test:/\.s?css$/,
       use:[
+        'style-loader',
         'css-loader'
       ]
     }]
